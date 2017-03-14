@@ -8,6 +8,10 @@
 
 import Foundation
 
+#if os(Linux)
+import Glibc
+#endif
+
 internal extension Int {
     
     static let largestIntegerFactorial: Int = {
@@ -25,7 +29,7 @@ internal extension Int {
 internal extension Double {
     
     func factorial() -> Double {
-        if Darwin.floor(self) == self && self > 1 {
+        if floor(self) == self && self > 1 {
             // it's an integer
             let arg1Int = Int(self)
             
